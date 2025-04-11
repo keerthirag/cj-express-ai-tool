@@ -4,9 +4,9 @@ A Streamlit-based AI tool for CJ Express's data and innovation team in Thailand.
 
 ## Features
 - **Dynamic Context Addition**: Upload PDFs or text to expand the knowledge base.
-- **Query Interface**: Ask questions and get answers grounded in the context.
-- **Context Retrieval**: View all stored files, their content, and manage them (view, download, delete).
-- **Branding**: Displays the CJ Express logo at the top.
+- **Query Interface**: Ask questions and get answers grounded in the context, with improved accuracy and reasoning using the `gpt-4o-mini` model.
+- **Context Retrieval**: View all stored files, their full content, and manage them (view, download, delete).
+- **Branding**: Displays the CJ Express logo at the top (width: 150 pixels).
 - **GitHub Ready**: Structured for easy deployment to GitHub.
 
 ## Setup Instructions
@@ -14,7 +14,7 @@ A Streamlit-based AI tool for CJ Express's data and innovation team in Thailand.
 ### Prerequisites
 - Python 3.8+
 - Git
-- An Open AI API key
+- An Open AI API key (with access to the `gpt-4o-mini` model)
 
 ### Installation
 1. Clone the repository:

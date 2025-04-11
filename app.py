@@ -22,12 +22,13 @@ client = OpenAI(api_key=openai_api_key)
 
 # Initialize components
 try:
-    model = SentenceTransformer('all-MiniLM-L6-v2')
+    # Use a multilingual embedding model for better Thai support
+    model = SentenceTransformer('paraphrase-multilingual-mpnet-base-v2')
 except Exception as e:
     st.error(f"Failed to load SentenceTransformer model: {e}")
     st.stop()
 
-dimension = 384  # Dimension of MiniLM embeddings
+dimension = 768  # Dimension of paraphrase-multilingual-mpnet-base-v2 embeddings
 index = faiss.IndexFlatL2(dimension)
 
 # Initialize SQLite database
@@ -56,8 +57,8 @@ if os.path.exists(initial_context_path):
                 cursor.execute("INSERT INTO files (name, upload_date, content) VALUES (?, ?, ?)",
                                (initial_context_path, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), text))
                 conn.commit()
-                # Process initial context into embeddings
-                chunks = [text[i:i+500] for i in range(0, len(text), 500)]
+                # Process initial context into embeddings with larger chunks
+                chunks = [text[i:i+1000] for i in range(0, len(text), 1000)]
                 embeddings = model.encode(chunks)
                 index.add(np.array(embeddings))
         except Exception as e:
@@ -75,7 +76,7 @@ def rebuild_faiss_index():
     files = cursor.execute("SELECT content FROM files").fetchall()
     for file_content in files:
         content = file_content[0]
-        chunks = [content[i:i+500] for i in range(0, len(content), 500)]
+        chunks = [content[i:i+1000] for i in range(0, len(content), 1000)]
         embeddings = model.encode(chunks)
         index.add(np.array(embeddings))
 
@@ -98,8 +99,8 @@ def process_file(file, file_type):
         with open(file_path, 'wb') as f:
             f.write(file.getbuffer())
         
-        # Chunk text for embeddings
-        chunks = [cleaned_text[i:i+500] for i in range(0, len(cleaned_text), 500)]
+        # Chunk text for embeddings with larger chunks
+        chunks = [cleaned_text[i:i+1000] for i in range(0, len(cleaned_text), 1000)]
         embeddings = model.encode(chunks)
         
         # Update FAISS index
@@ -115,33 +116,52 @@ def process_file(file, file_type):
         st.error(f"Failed to process file: {e}")
         return None
 
-# Query handling with RAG
+# Query handling with improved RAG
 def answer_query(query):
     try:
         # Embed the query
         query_embedding = model.encode([query])
-        D, I = index.search(np.array(query_embedding), k=5)  # Retrieve top 5 chunks
-        
+        # Retrieve top 10 chunks for broader context
+        D, I = index.search(np.array(query_embedding), k=10)
+
         # Fetch relevant context
         context = []
         for idx in I[0]:
             cursor.execute("SELECT content FROM files WHERE id=?", (idx+1,))
             result = cursor.fetchone()
             if result:
-                context.append(result[0][:500])  # Limit context length
+                context.append(result[0][:1000])  # Limit each chunk to 1000 characters
         
         context_text = "\n".join(context)
         
-        # Call Open AI API
+        # Improved prompt with step-by-step reasoning
+        system_prompt = (
+            "You are an AI assistant for CJ Express, a convenience store chain in Thailand. "
+            "Your task is to provide accurate and insightful answers based on the provided context. "
+            "Follow these steps:\n"
+            "1. Analyze the context carefully to identify relevant information.\n"
+            "2. If the context is insufficient, clearly state that the information is not available and provide a general response based on your knowledge of retail trends.\n"
+            "3. Structure your answer in a clear and concise manner, using bullet points or paragraphs as appropriate.\n"
+            "4. Avoid speculation and focus on the provided context.\n"
+            "5. If the query is ambiguous, ask for clarification or interpret it in the most logical way."
+        )
+        
+        # Call Open AI API with a more advanced model (if available)
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",  # Use gpt-3.5-turbo-16k for better context handling
             messages=[
-                {"role": "system", "content": "You are an AI assistant for CJ Express, a convenience store chain in Thailand. Answer questions based on the provided context."},
+                {"role": "system", "content": system_prompt},
                 {"role": "user", "content": f"Context: {context_text}\n\nQuestion: {query}"}
             ],
-            max_tokens=500
+            max_tokens=1000,  # Increase token limit for more detailed answers
+            temperature=0.7  # Balanced creativity and accuracy
         )
-        return response.choices[0].message.content
+        
+        # Post-process the answer for better readability
+        answer = response.choices[0].message.content.strip()
+        # Replace multiple newlines with a single newline for cleaner formatting
+        answer = "\n".join(line.strip() for line in answer.splitlines() if line.strip())
+        return answer
     except Exception as e:
         st.error(f"Failed to process query: {e}")
         return "An error occurred while processing your query."
@@ -190,6 +210,17 @@ elif page == "Ask a Question":
             answer = answer_query(query)
         st.subheader("Answer:")
         st.write(answer)
+        
+        # Add feedback mechanism
+        st.write("---")
+        st.write("Was this answer helpful?")
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Yes"):
+                st.success("Thank you for your feedback!")
+        with col2:
+            if st.button("No"):
+                st.warning("Sorry to hear that. Please try rephrasing your question or adding more context.")
 
 elif page == "View Context":
     st.header("View Stored Context")
