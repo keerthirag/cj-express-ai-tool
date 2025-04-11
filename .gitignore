@@ -1,0 +1,8 @@
+node_modules/
+*.pdf
+*.txt
+context.db
+.env
+data/*
+!data/initial_context.txt
+venv/

@@ -1,0 +1,44 @@
+# CJ Express Context
+
+## Company Overview
+CJ Express is a Thailand-based supermarket chain aiming to disrupt the highly competitive global retail market through high-tech solutions and innovative business models. Over the years, CJ Express has evolved its strategies to adapt to fast-changing consumer behaviors, focusing on delivering exceptional customer experiences, operational efficiency, and global expansion within the next 3-5 years.
+
+## Business Focus Areas
+CJ Express targets a diverse customer base, including mid-high to low-income groups, multi-generational families, and varied lifestyles such as trendy women, pet lovers, blue-collar workers, and Bao Café Club members. The company emphasizes the following key areas:
+1. **Category Management**: Optimizing product assortment to meet diverse customer needs.
+2. **Product Development**: Creating innovative offerings tailored to consumer trends.
+3. **Offline Promotion**: Enhancing in-store engagement to drive sales.
+4. **Supply Chain/Logistics**: Ensuring efficient distribution to support operations.
+5. **Store Operations**: Streamlining processes for better customer service and cost efficiency.
+
+## Customer Segments by Repurchasing Behaviors
+CJ Express has identified 6 customer segments based on repurchasing behaviors, categorized by seasonality, day of the week, and day of the month:
+1. **Convenient Shoppers**: Contribute $0.55M (13% of sales).
+2. **Weekly Shoppers**: Contribute $0.65M (15% of sales).
+3. **Monthly Shoppers**: Contribute $0.45M (11% of sales).
+4. **Weekly and Monthly Shoppers**: Contribute $0.46M (11% of sales).
+5. **Seasonality-Based Shoppers**: Patterns influenced by seasonal trends.
+6. **No Seasonality Shoppers**: No clear seasonal patterns in purchasing.
+
+### Repurchasing Behavior Notes
+- 85% of return visits occur within 14 days.
+- Despite mostly random intervals, routines are observed in weekly patterns (every 7 days) and monthly patterns (every 30 days).
+- 50% of return visits occur at the same daily timings (within a 24-hour cycle).
+
+## Customer Segments by Shopping Theme
+CJ Express has also segmented its customer base into 7 groups based on shopping themes, reflecting their lifestyle and income levels:
+
+| Segment                 | Members   | % of Members |
+|-------------------------|-----------|--------------|
+| Mid-High Income         | 1,301,611 | 27%          |
+| Low Income              | 1,143,901 | 24%          |
+| Multi-generational Family | 198,317 | 4%           |
+| Blue Collar             | 388,768   | 8%           |
+| Trendy Women            | 314,922   | 7%           |
+| Bao Café Club           | 935,071   | 19%          |
+| Pet Lover               | 533,593   | 11%          |
+
+## Goals
+- **Global Expansion**: Establish a presence in international markets within 3-5 years.
+- **Operational Efficiency**: Leverage technology to streamline supply chain, logistics, and store operations.
+- **Enhanced Customer Experience**: Use data-driven insights to personalize offerings and improve in-store engagement.
