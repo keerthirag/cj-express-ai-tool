@@ -352,7 +352,7 @@ elif page == "Tech Disruptor Analyzer":
         The data in the Excel file (`cmu_startups.xlsx`) originates from CMU’s tech transfer office, which supports the commercialization of university research through spin-off startups. The process to compile and analyze this data involved the following steps:
 
         1. **Data Collection**:
-           - A separate tool (hosted on [GitHub](https://github.com/placeholder/cmu-tech-scraper)) was used to scrape publicly available information from CMU’s tech transfer office, including startup profiles, technology descriptions, and sector classifications.
+           - A separate tool (hosted on [GitHub](https://github.com/keerthirag/cj-express-ai-tool/blob/main/cmu_techtransfer_startup_analysis.py)) was used to scrape publicly available information from CMU’s tech transfer office, including startup profiles, technology descriptions, and sector classifications.
            - Sources included CMU’s tech transfer website, startup pages, and related publications, focusing on startups in categories like Chemistry and Materials Science, Cleantech/Energy, Electronics/Semiconductors, Medical Devices/Biotech, Robotics, Software and AI, and Social Ventures.
            - The scraping tool extracted details such as company names, technologies, abilities, and industry categories, ensuring compliance with web scraping best practices (e.g., respecting robots.txt, using browser-like headers).
 
@@ -399,7 +399,7 @@ elif page == "Tech Disruptor Analyzer":
           - Create user roles (e.g., analyst, executive) with customized dashboards for different decision-making needs.
 
         ### Separate Scraping and Analysis Tool
-        The data collection and analysis were performed using a separate Python-based tool, available on [GitHub](https://github.com/placeholder/cmu-tech-scraper). This tool includes:
+        The data collection and analysis were performed using a separate Python-based tool, available on [GitHub](https://github.com/keerthirag/cj-express-ai-tool/blob/main/cmu_techtransfer_startup_analysis.py). This tool includes:
         - Web scraping scripts to extract startup data from CMU’s tech transfer office and related websites.
         - Analysis pipelines to score technologies and generate pillar-specific insights, leveraging AI for contextual reasoning.
         - Export functionality to produce the Excel file (`cmu_startups.xlsx`) used by this Streamlit app.
