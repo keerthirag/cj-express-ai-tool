@@ -23,8 +23,6 @@ This README provides a detailed overview of each application, its functionality,
   - [Accessing Features](#accessing-features)
   - [Expected Inputs and Outputs](#expected-inputs-and-outputs)
 - [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -272,6 +270,16 @@ CJ-EXPRESS-AI-TOOL/
 - **File not found**: Verify filenames and paths in `data/` and `static/`.
 
 ---
+
+## Contributing
+
+Feel free to fork the repo, create issues, and submit PRs for new features or bug fixes. Follow conventional commit messages and document new apps in this README.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE` file for more details.
 
 ---
 
