@@ -271,17 +271,4 @@ CJ-EXPRESS-AI-TOOL/
 
 ---
 
-## Contributing
-
-Feel free to fork the repo, create issues, and submit PRs for new features or bug fixes. Follow conventional commit messages and document new apps in this README.
-
----
-
-## License
-
-This project is licensed under the MIT License. See `LICENSE` file for more details.
-
----
-
 *Maintained by the CJ Express Innovation Team & Contributors.*
-```
