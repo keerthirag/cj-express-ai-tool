@@ -1,8 +1,8 @@
 # CJ Express AI Innovation Suite
 
-Welcome to the **CJ Express AI Innovation Suite**, a collection of Streamlit-based applications designed to empower **CJ Express**, a Thai supermarket chain, with cutting-edge tools for strategic decision-making, technology scouting, and innovation planning. This suite leverages AI, data analytics, and user-friendly interfaces to support CJ Express's goals of global expansion, operational efficiency, and enhanced customer experience over a 3-5 year horizon.
+Welcome to the **CJ Express AI Innovation Suite**, a collection of Streamlit-based applications designed to empower **CJ Express** with cutting-edge tools for strategic decision-making, technology scouting, and innovation planning. This suite leverages AI, data analytics, and user-friendly interfaces to support CJ Express's goals of global expansion, operational efficiency, and enhanced customer experience over a 3-5 year horizon.
 
-This README provides a detailed overview of each application, its functionality, setup instructions, and how to run the suite. Whether you're part of CJ Express's innovation team or a developer contributing to this project, this guide will help you navigate and utilize these tools effectively.
+This README provides a detailed overview of each application, its functionality, setup instructions, and how to run the suite.
 
 ---
 
@@ -272,16 +272,6 @@ CJ-EXPRESS-AI-TOOL/
 - **File not found**: Verify filenames and paths in `data/` and `static/`.
 
 ---
-
-## Contributing
-
-Feel free to fork the repo, create issues, and submit PRs for new features or bug fixes. Follow conventional commit messages and document new apps in this README.
-
----
-
-## License
-
-This project is licensed under the MIT License. See `LICENSE` file for more details.
 
 ---
 
